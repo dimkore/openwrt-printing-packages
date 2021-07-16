@@ -1,0 +1,10 @@
+--- ghostscript-9.06/cups/colord.h	2021-07-13 11:11:14.543704444 +0200
++++ ghostscript-9.06/cups/colord.h	2021-07-13 11:11:24.214705044 +0200
+@@ -28,6 +28,7 @@
+ /* Common routines for accessing the colord CMS framework */
+ 
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ 
+ char  **colord_get_qualifier_for_ppd      (ppd_file_t *ppd);
+ char   *colord_get_profile_for_device_id  (const char *device_id,

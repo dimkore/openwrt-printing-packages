@@ -1,0 +1,19 @@
+--- ghostscript-9.05/psi/fapi_ft.c	2021-07-13 10:33:30.673633857 +0200
++++ ghostscript-9.05/psi/fapi_ft.c	2021-07-13 10:32:54.812631631 +0200
+@@ -53,6 +53,16 @@
+ #include FT_IMAGE_H
+ #include FT_BITMAP_H
+ 
++/* FT_CALLBACK_DEF no longer exported since freetype-2.10.3 */
++/* has been moved to <freetype/internal/compiler-macros.h> */
++# ifndef FT_CALLBACK_DEF
++#  ifdef __cplusplus
++#   define FT_CALLBACK_DEF( x )  extern "C"  x
++#  else
++#   define FT_CALLBACK_DEF( x )  static  x
++#  endif
++# endif /* FT_CALLBACK_DEF */
++
+ /* Note: structure definitions here start with FF_, which stands for 'FAPI FreeType". */
+ 
+ typedef struct FF_server_s
