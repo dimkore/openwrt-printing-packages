@@ -1,0 +1,21 @@
+diff --git a/hplj1000 b/hplj1000
+index 323069c..709e5e8 100755
+--- a/hplj1000
++++ b/hplj1000
+@@ -165,13 +165,9 @@ rm -f /lib/udev/rules.d/*hpmud_plugin.rules
+ case "$1" in
+ install-usermap)
+     if [ "$USB2" != "" ]; then
+-	if [ -w /etc/hotplug/usb.usermap ]; then
+-		USERMAP=/etc/hotplug/usb.usermap
+-	elif [ -d /etc/hotplug/usb/ ]; then
+-		USERMAP=/etc/hotplug/usb/foo2zjs.usermap
+-		if [ ! -s $USERMAP ]; then
+-			echo > $USERMAP
+-		fi
++    if [ -d $(dirname "$0") ]; then
++        USERMAP=$(dirname "$0")/foo2zjs.usermap
++        touch $USERMAP
+ 	else
+ 		log "No /etc/hotplug usermap!"
+ 		exit
